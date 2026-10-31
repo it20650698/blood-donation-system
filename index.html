@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ලේ දන් දීමේ වැඩසටහන</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Inter:wght@400;600;700;800&family=Noto+Sans+Sinhala:wght@400;600;700;800&display=swap">
+<style>
+:root{--red:#b91c1c;--red2:#7f1d1d;--red3:#ef4444;--bg:#fbf8f6;--card:#fff;--ink:#1c1917;--mut:#78716c;--line:#ece6e1;--hero:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#140f0f;--card:#1f1717;--ink:#f5efef;--mut:#a89b9b;--line:#352a2a}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Abhaya Libre','Inter','Noto Sans Sinhala',system-ui,sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 6vw;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:14px;min-width:0}
+.logo{width:46px;height:46px;flex:none;border-radius:50%;background:#fde8e8;display:grid;place-items:center;overflow:hidden;font-size:22px;box-shadow:0 0 0 3px var(--card),0 0 0 4px var(--line)}
+.logo img{width:100%;height:100%;object-fit:cover}
+.hdr-r{display:flex;align-items:center;gap:14px}
+nav a{color:var(--mut);text-decoration:none;padding:8px 12px;border-radius:10px;font-size:14px;font-weight:600}
+nav a:hover{color:var(--red);background:#fdf2f2}
+.seg{display:inline-flex;background:var(--line);border-radius:12px;padding:3px}
+.seg button{border:0;background:transparent;padding:6px 12px;border-radius:9px;cursor:pointer;color:var(--mut);font-weight:600;font-size:13px}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,var(--red3),var(--red));color:#fff;border:0;border-radius:14px;padding:13px 24px;font-weight:700;cursor:pointer;text-decoration:none;box-shadow:0 12px 24px -10px rgba(185,28,28,.7);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 28px -10px rgba(185,28,28,.8)}
+.btn:active{transform:translateY(0)}
+.btn:disabled{opacity:.45;cursor:default;transform:none;box-shadow:none}
+.btn.lg{padding:16px 30px;font-size:16px}
+.btn.ghost{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.5);box-shadow:none}
+.btn.ghost:hover{background:rgba(255,255,255,.16)}
+.btn.dark{background:var(--ink);box-shadow:none}
+.btn.sm{padding:7px 13px;font-size:13px;border-radius:10px;box-shadow:none}
+.btn.line{background:transparent;color:var(--red);border:1.5px solid var(--red);box-shadow:none}
+.btn.wa{background:#16a34a;box-shadow:none}
+.hero{min-height:78vh;display:flex;align-items:center;padding:80px 6vw 120px;color:#fff;background:radial-gradient(ellipse at top right,rgba(239,68,68,.18),transparent 60%),linear-gradient(135deg,rgba(127,29,29,.5),rgba(30,0,0,.4)),var(--hero) center/cover no-repeat,#7f1d1d}
+.hero h1,.hero p{text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.hero-in{max-width:760px}
+.eyebrow{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:6px 16px;border-radius:99px;font-size:14px;margin-bottom:20px;font-weight:600}
+.hero h1{font-size:clamp(34px,5.5vw,60px);line-height:1.18;margin:0 0 18px;font-weight:800;letter-spacing:-.02em}
+.hero p{font-size:18px;opacity:.92;margin:0 0 32px;max-width:600px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.strip{max-width:880px;margin:-64px auto 0;padding:0 6vw;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.strip div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 26px;box-shadow:0 20px 40px -24px rgba(0,0,0,.3)}
+.strip b{display:block;font-size:34px;color:var(--red);line-height:1.2}
+.strip span{color:var(--mut);font-size:14px;font-weight:600}
+.wrap{max-width:1080px;margin:0 auto;padding:72px 6vw}
+.narrow{max-width:760px}
+h2{font-size:30px;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--mut);margin:0 0 30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 34px -22px rgba(0,0,0,.35)}
+.card .ic{width:48px;height:48px;border-radius:14px;background:#fde8e8;display:grid;place-items:center;font-size:24px;margin-bottom:14px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:var(--mut);font-size:15px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+label{display:block;font-size:14px;font-weight:600;margin-bottom:7px}
+input,select,textarea{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);margin-bottom:16px;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(185,28,28,.12)}
+.hint{font-size:13px;margin:-10px 0 16px;min-height:18px;font-weight:600}
+.warn{color:#b45309}.ok{color:#15803d}.err{color:var(--red)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;margin-bottom:22px}
+.panel h3{margin:0 0 14px;font-size:18px}
+.card-form{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px;box-shadow:0 30px 60px -40px rgba(0,0,0,.35)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:22px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.stat b{display:block;font-size:36px;color:var(--red);line-height:1.2}
+.stat span{color:var(--mut);font-size:14px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.bar{display:grid;grid-template-columns:46px 1fr 36px;align-items:center;gap:12px;margin:9px 0;font-size:14px;font-weight:700}
+.track{height:12px;background:var(--line);border-radius:99px;overflow:hidden}
+.track i{display:block;height:100%;background:linear-gradient(90deg,#fb7185,var(--red));border-radius:99px;transition:width .6s}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.tools input{flex:1 1 220px;margin:0}
+.tools select{width:auto;margin:0}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mut);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.03em}
+.tag{background:#fde8e8;color:var(--red);padding:3px 10px;border-radius:99px;font-weight:800;font-size:13px}
+.act{display:flex;gap:6px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,160%);transition:transform .35s cubic-bezier(.2,.8,.2,1);padding:14px 22px;border-radius:14px;background:var(--ink);color:var(--card);font-weight:600;max-width:92vw;z-index:20;box-shadow:0 20px 40px -16px rgba(0,0,0,.5)}
+.toast.show{transform:translate(-50%,0)}
+.toast.good{background:#15803d;color:#fff}.toast.bad{background:var(--red);color:#fff}
+footer{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;color:var(--mut);font-size:14px;padding:36px 6vw;border-top:1px solid var(--line);margin-top:40px}
+.flink{color:var(--mut);text-decoration:none;font-weight:600;margin-left:8px;opacity:.7}
+.flink:hover{color:var(--red);opacity:1}
+.link{background:none;border:0;color:var(--mut);cursor:pointer;text-decoration:underline;padding:0;font-weight:600}
+@media (max-width:700px){.row,.two{grid-template-columns:1fr}nav{display:none}.card-form{padding:22px}.strip{grid-template-columns:1fr}}
+@media print{header,footer,.noprint,.hero,#register,#login,#setForm,.toast{display:none!important}.panel{border:0;box-shadow:none}.wrap{padding:0}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand"><div class="logo">🩸</div><span class="org"></span></div>
+  <div class="hdr-r">
+    <nav><a href="#home" data-i="nav_home"></a><a href="#register" data-i="nav_reg"></a></nav>
+    <div class="seg"><button data-lang="si">සිංහල</button><button data-lang="en">English</button></div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-in">
+    <span class="eyebrow org"></span>
+    <h1 id="heroTitle"></h1>
+    <p id="desc"></p>
+    <div class="cta">
+      <a class="btn lg" href="#register" data-i="hero_btn"></a>
+      <a class="btn ghost lg" href="#details" data-i="hero_more"></a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div><b id="sTotal">0</b><span data-i="stat_total"></span></div>
+  <div><b id="sElig">0</b><span data-i="stat_elig"></span></div>
+</div>
+
+<section class="wrap" id="details">
+  <h2 data-i="det_title"></h2>
+  <p class="sub" data-i="det_sub"></p>
+  <div class="grid">
+    <div class="card"><div class="ic">📅</div><h3 data-i="c_date"></h3><p id="dateTxt"></p></div>
+    <div class="card"><div class="ic">📞</div><h3 data-i="c_contact"></h3><p id="phoneTxt"></p></div>
+    <div class="card"><div class="ic">❤️</div><h3 data-i="c_who"></h3><p data-i="c_who_t"></p></div>
+    <div class="card"><div class="ic">⏱️</div><h3 data-i="c_wait"></h3><p data-i="c_wait_t"></p></div>
+  </div>
+</section>
+
+<section class="wrap narrow" id="register" style="padding-top:20px">
+  <div class="card-form">
+    <h2 data-i="reg_title"></h2>
+    <p class="sub" data-i="reg_sub"></p>
+    <form id="regForm" novalidate>
+      <div class="row">
+        <div><label data-i="f_name"></label><input name="name" required></div>
+        <div><label data-i="f_age"></label><input name="age" type="number" min="18" max="65" required></div>
+      </div>
+      <label data-i="f_phone"></label>
+      <input id="phone" name="phone" inputmode="tel" data-ph="ph_phone" required>
+      <div class="hint" id="dupHint"></div>
+      <div class="row">
+        <div><label data-i="f_nic"></label><input name="nic"></div>
+        <div><label data-i="f_bg"></label><select id="bgSel" name="bg"><option value="" data-i="sel_pick"></option></select></div>
+      </div>
+      <label data-i="f_addr"></label><input name="addr">
+      <label data-i="f_last"></label><input name="last" type="date">
+      <button class="btn" type="submit" data-i="btn_reg"></button>
+    </form>
+  </div>
+</section>
+
+<section class="wrap" id="admin" hidden>
+  <div class="panel" id="login" style="max-width:440px;margin:0 auto">
+    <h2 data-i="login_title"></h2>
+    <p class="sub" data-i="login_sub"></p>
+    <form id="loginForm">
+      <label data-i="f_pw"></label>
+      <input id="pw" type="password" required>
+      <button class="btn" type="submit" data-i="btn_login"></button>
+      <p id="loginErr" class="err" style="margin:12px 0 0;font-weight:600"></p>
+    </form>
+  </div>
+
+  <div id="dash" hidden>
+    <div class="noprint" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:22px">
+      <h2 data-i="dash_title"></h2>
+      <div style="display:flex;gap:10px">
+        <a class="btn line sm" href="#home" data-i="back_site"></a>
+        <button class="btn dark sm" id="logout" data-i="btn_logout"></button>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="aTotal">0</b><span data-i="st_total"></span></div>
+      <div class="stat"><b id="aToday">0</b><span data-i="st_today"></span></div>
+      <div class="stat"><b id="aElig">0</b><span data-i="st_elig"></span></div>
+    </div>
+    <div class="two">
+      <div class="panel"><h3 data-i="bars"></h3><div id="bars"></div></div>
+      <div class="panel noprint"><h3 data-i="rep_title"></h3><p class="sub" data-i="rep_sub"></p>
+        <div class="act" style="gap:10px">
+          <button class="btn" id="exportBtn" data-i="btn_export"></button>
+          <button class="btn line" id="printBtn" data-i="btn_print"></button>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3 data-i="search_title"></h3>
+      <div class="tools">
+        <input id="q" data-ph="q_ph">
+        <select id="fbg"><option value="" data-i="all_bg"></option></select>
+        <span id="count" class="sub" style="margin:0"></span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th data-i="c_name"></th><th data-i="c_age"></th><th data-i="c_phone"></th><th data-i="c_bg"></th><th data-i="c_addr"></th><th data-i="c_last"></th><th></th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel noprint">
+      <h3 data-i="set_title"></h3>
+      <form id="setForm">
+        <div class="row">
+          <div><label data-i="f_org"></label><input id="sOrg" placeholder="සිංහල"></div>
+          <div><label data-i="f_org"></label><input id="sOrgEn" placeholder="English"></div>
+        </div>
+        <div class="row">
+          <div><label data-i="f_title"></label><input id="sTitle" placeholder="සිංහල"></div>
+          <div><label data-i="f_title"></label><input id="sTitleEn" placeholder="English"></div>
+        </div>
+        <div class="row">
+          <div><label data-i="f_desc"></label><textarea id="sDesc" rows="3" placeholder="සිංහල"></textarea></div>
+          <div><label data-i="f_desc"></label><textarea id="sDescEn" rows="3" placeholder="English"></textarea></div>
+        </div>
+        <div class="row">
+          <div><label data-i="f_date"></label><input id="sDate"></div>
+          <div><label data-i="f_phone2"></label><input id="sPhone"></div>
+        </div>
+        <div class="row">
+          <div><label data-i="f_hero"></label><input type="file" id="sHero" accept="image/*"></div>
+          <div><label data-i="f_logo"></label><input type="file" id="sLogo" accept="image/*"></div>
+        </div>
+        <div class="row">
+          <div><label data-i="f_newpw"></label><input id="sPass" type="password" minlength="4"></div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+            <button class="btn" type="submit" data-i="btn_save"></button>
+            <button class="link" type="button" id="clearHero" data-i="btn_clear"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="org"></span><span>·</span><span data-i="footer_prog"></span>
+  <a class="flink" href="#admin" data-i="footer_admin"></a>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const BG=['A+','A-','B+','B-','AB+','AB-','O+','O-'];
+const SHEET_URL='https://script.google.com/macros/s/AKfycbwgRV7W3UNI9rSu8lzql0GSngj5nXGmSIHKnLhKN1oWfbJn6ywElgw2pQRQGD9mErp5Iw/exec';
+const DEF={org:'කුඩිරිප්පුව ශ්‍රී සුරම්මාරාම තරුණ බෞද්ධ සමිතිය',orgEn:'Kudiripputhuwa Sri Surammarama Youth Buddhist Society',title:'ලේ දන් දීමේ වැඩසටහන',titleEn:'Blood Donation Programme',desc:'ඔබේ ලේ බින්දුවක් තවත් ජීවිතයක් බේරා ගත හැක. මෙම වැඩසටහනට එක්වී ජීවිතයක් රකින්න.',descEn:'A single donation of your blood can save a life. Join us and help keep our community healthy.',date:'',phone:'',hero:'hero.jpg',logo:'logo.png',pass:'admin123'};
+const I={
+si:{nav_home:'මුල් පිටුව',nav_reg:'ලියාපදිංචි වන්න',hero_btn:'🩸 ලේ දායකයෙකු ලෙස ලියාපදිංචි වන්න',hero_more:'වැඩි විස්තර',stat_total:'ලියාපදිංචි දායකයන්',stat_elig:'දැන් ලේ දිය හැකි',det_title:'වැඩසටහන් විස්තර',det_sub:'ඔබ දැනගත යුතු දේවල්',c_date:'දිනය',c_date_t:'දිනය ඉක්මනින් දැනුම් දෙනු ඇත',c_contact:'සම්බන්ධ වීමට',c_who:'කවුද ලේ දිය හැක්කේ?',c_who_t:'වයස 18–65 අතර, සෞඛ්‍ය සම්පන්න ඕනෑම කෙනෙකුට.',c_wait:'නැවත ලේ දීම',c_wait_t:'සාමාන්‍යයෙන් දින 90කට පසු නැවත ලේ දිය හැක.',reg_title:'ලේ දායකයෙකු ලෙස ලියාපදිංචිය',reg_sub:'තත්පර කිහිපයකින් ලියාපදිංචි වන්න',f_name:'නම *',f_age:'වයස *',f_phone:'දුරකථන අංකය *',f_nic:'ජාතික හැඳුනුම්පත් අංකය (ඇත්නම් පමණි)',f_bg:'ලේ වර්ගය (දන්නේ නම් පමණි)',f_addr:'ලිපිනය / ගම',f_last:'අවසන් වරට ලේ දුන් දිනය (දන්නේ නම්)',sel_pick:'දන්නේ නැත',btn_reg:'ලියාපදිංචි වන්න',ph_phone:'07X XXX XXXX',dup_warn:'⚠ මෙම අංකය දැනටමත් ලියාපදිංචි වී ඇත: ',dup_ok:'✓ නව අංකයකි',err_form:'නම, වයස (18–65) සහ දුරකථන අංකය නිවැරදිව ඇතුළත් කරන්න',dup_reg:'මෙම ලියාපදිංචිය දැනටමත් පවතී: ',thanks:'ස්තූතියි! ඔබේ ලියාපදිංචිය සාර්ථකයි.',footer_prog:'ලේ දන් දීමේ වැඩසටහන',footer_admin:'පරිපාලක',login_title:'පරිපාලක ප්‍රවේශය',login_sub:'මෙය සමිතියේ කාර්ය මණ්ඩලය සඳහා පමණි',f_pw:'මුරපදය',btn_login:'ඇතුල් වන්න',pw_wrong:'මුරපදය වැරදියි',back_site:'← වෙබ් අඩවියට',btn_logout:'පිටවන්න',dash_title:'පරිපාලක පුවරුව',st_total:'ලියාපදිංචි පිරිස',st_today:'අද පැමිණි පිරිස',st_elig:'දැන් ලේ දිය හැකි',bars:'රුධිර වර්ග අනුව',rep_title:'වාර්තා',rep_sub:'Excel (CSV) export සහ මුද්‍රණය',btn_export:'Excel Export',btn_print:'වාර්තාව මුද්‍රණය',search_title:'දායක සෙවීම',q_ph:'නම, දුරකථනය, NIC, ගම...',all_bg:'සියලු ලේ වර්ග',c_name:'නම',c_age:'වයස',c_phone:'දුරකථන',c_bg:'ලේ',c_addr:'ලිපිනය',c_last:'අවසන් දුන්',btn_today:'අද පැමිණියා',btn_del:'මකන්න',no_data:'දත්ත නොමැත',confirm_del:'මෙම ලියාපදිංචිය මකන්නද?',set_title:'වැඩසටහන් සැකසුම්',f_org:'සමිතියේ නම',f_title:'මාතෘකාව',f_desc:'විස්තරය',f_date:'දිනය',f_phone2:'දුරකථන අංකය',f_hero:'Hero පින්තූරය (1.2MB දක්වා)',f_logo:'ලාංඡනය (300KB දක්වා)',f_newpw:'නව මුරපදය (වෙනස් කිරීමට පමණි)',btn_save:'සුරකින්න',btn_clear:'Hero ඉවත් කරන්න',saved:'✓ සුරකින ලදී',too_big:'ගොනුව ඉතා විශාලයි',save_fail:'ගොනුව සුරැකිය නොහැකි විය'},
+en:{nav_home:'Home',nav_reg:'Register',hero_btn:'🩸 Register as a Donor',hero_more:'Programme details',stat_total:'Registered donors',stat_elig:'Eligible to donate now',det_title:'Programme details',det_sub:'What you need to know',c_date:'Date',c_date_t:'Date to be announced soon',c_contact:'Contact',c_who:'Who can donate?',c_who_t:'Healthy adults aged 18–65.',c_wait:'Donating again',c_wait_t:'Usually you can donate again after 90 days.',reg_title:'Donor registration',reg_sub:'Register in under a minute',f_name:'Full name *',f_age:'Age *',f_phone:'Phone number *',f_nic:'National ID (optional)',f_bg:'Blood group (if known)',f_addr:'Address / village',f_last:'Last donation date (if known)',sel_pick:'Not sure',btn_reg:'Register',ph_phone:'07X XXX XXXX',dup_warn:'⚠ This number is already registered: ',dup_ok:'✓ New number',err_form:'Please enter name, age (18–65) and phone number correctly',dup_reg:'This registration already exists: ',thanks:'Thank you! Your registration is complete.',footer_prog:'Blood Donation Programme',footer_admin:'Admin',login_title:'Admin access',login_sub:'For society staff only',f_pw:'Password',btn_login:'Log in',pw_wrong:'Incorrect password',back_site:'← Back to site',btn_logout:'Log out',dash_title:'Admin dashboard',st_total:'Registered donors',st_today:'Attended today',st_elig:'Eligible to donate now',bars:'By blood group',rep_title:'Reports',rep_sub:'Excel (CSV) export and print',btn_export:'Excel Export',btn_print:'Print report',search_title:'Donor search',q_ph:'Name, phone, NIC, village...',all_bg:'All blood groups',c_name:'Name',c_age:'Age',c_phone:'Phone',c_bg:'Blood',c_addr:'Address',c_last:'Last donated',btn_today:'Attended today',btn_del:'Delete',no_data:'No records',confirm_del:'Delete this registration?',set_title:'Programme settings',f_org:'Society name',f_title:'Title',f_desc:'Description',f_date:'Date',f_phone2:'Phone number',f_hero:'Hero image (up to 1.2MB)',f_logo:'Logo (up to 300KB)',f_newpw:'New password (only to change)',btn_save:'Save',btn_clear:'Remove hero image',saved:'✓ Saved',too_big:'File is too large',save_fail:'Could not save the file'}
+};
+let lang=localStorage.getItem('bdms_lang')||'si';
+const T=k=>(I[lang]&&I[lang][k])||I.en[k]||k;
+let db={s:{},d:[]};
+try{const x=JSON.parse(localStorage.getItem('bdms_v1'))||{};db={s:x.s||{},d:x.d||[]}}catch(e){}
+db.s=Object.assign({},DEF,db.s);
+function save(){try{localStorage.setItem('bdms_v1',JSON.stringify(db))}catch(e){}}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
+const normPhone=p=>String(p).replace(/\D/g,'').slice(-9);
+const dupOf=(phone,nic,name)=>{const n=(nic||'').trim().toUpperCase(),p=normPhone(phone),nm=(name||'').trim().toLowerCase();return db.d.find(x=>(n&&x.nic===n)||(p.length>=9&&normPhone(x.phone)===p&&nm!==''&&x.name.trim().toLowerCase()===nm))};
+const eligibleCount=()=>db.d.filter(x=>!x.last||(Date.now()-Date.parse(x.last))/864e5>=90).length;
+let tt;function toast(m,t){const el=$('toast');el.textContent=m;el.className='toast show '+(t||'');clearTimeout(tt);tt=setTimeout(()=>el.className='toast',3800)}
+
+BG.forEach(b=>{$('bgSel').insertAdjacentHTML('beforeend',`<option>${b}</option>`);$('fbg').insertAdjacentHTML('beforeend',`<option>${b}</option>`)});
+
+function applyLang(){
+  document.documentElement.lang=lang==='si'?'si':'en';
+  document.querySelectorAll('[data-i]').forEach(el=>el.textContent=T(el.dataset.i));
+  document.querySelectorAll('[data-ph]').forEach(el=>el.placeholder=T(el.dataset.ph));
+  document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+  applySettings();
+  if(authed)renderAll();
+}
+document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;localStorage.setItem('bdms_lang',lang);applyLang()});
+
+function applySettings(){
+  const s=db.s,en=lang==='en',pk=(a,b)=>en&&b?b:a;
+  document.documentElement.style.setProperty('--hero',s.hero?`url("${s.hero}")`:'none');
+  document.querySelectorAll('.org').forEach(el=>el.textContent=pk(s.org,s.orgEn));
+  document.querySelectorAll('.logo').forEach(el=>{el.innerHTML=s.logo?`<img src="${s.logo}" alt="">`:'🩸'});
+  $('heroTitle').textContent=pk(s.title,s.titleEn);
+  $('desc').textContent=pk(s.desc,s.descEn);
+  $('dateTxt').textContent=s.date||T('c_date_t');
+  $('phoneTxt').textContent=s.phone||'—';
+  document.title=pk(s.title,s.titleEn);
+  $('sTotal').textContent=db.d.length;$('sElig').textContent=eligibleCount();
+}
+function fillSettings(){
+  const s=db.s;
+  $('sOrg').value=s.org;$('sOrgEn').value=s.orgEn;
+  $('sTitle').value=s.title;$('sTitleEn').value=s.titleEn;
+  $('sDesc').value=s.desc;$('sDescEn').value=s.descEn;
+  $('sDate').value=s.date;$('sPhone').value=s.phone;
+}
+
+$('phone').addEventListener('input',()=>{
+  const h=$('dupHint'),v=$('phone').value;
+  if(normPhone(v).length<9){h.textContent='';return}
+  h.className='hint ok';
+  h.textContent=T('dup_ok');
+});
+
+$('regForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target,v=k=>f[k].value.trim();
+  const age=+v('age'),phone=v('phone'),nic=v('nic').toUpperCase();
+  if(!v('name')||!(age>=18&&age<=65)||normPhone(phone).length<9)return toast(T('err_form'),'bad');
+  const dup=dupOf(phone,nic,v('name'));
+  if(dup)return toast(T('dup_reg')+dup.name,'bad');
+  db.d.unshift({id:String(Date.now()),name:v('name'),age,phone,nic,bg:v('bg'),addr:v('addr'),last:v('last'),reg:today()});
+  fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(db.d[0])}).catch(()=>{});
+  save();f.reset();$('dupHint').textContent='';
+  toast(T('thanks'),'good');
+  applySettings();
+  if(authed)renderAll();
+});
+
+let authed=false;
+$('loginForm').onsubmit=e=>{
+  e.preventDefault();
+  if($('pw').value===db.s.pass){authed=true;$('pw').value='';$('loginErr').textContent='';renderGate()}
+  else $('loginErr').textContent=T('pw_wrong');
+};
+$('logout').onclick=()=>{authed=false;location.hash='#home';route()};
+
+function renderGate(){
+  $('login').hidden=authed;$('dash').hidden=!authed;
+  if(authed)renderAll();
+}
+function route(){
+  const open=location.hash==='#admin';
+  $('admin').hidden=!open;
+  if(open){renderGate();$('admin').scrollIntoView({behavior:'smooth'})}
+}
+window.addEventListener('hashchange',route);
+
+function renderAll(){
+  const d=db.d,t=today(),elig=eligibleCount(),todayN=d.filter(x=>x.last===t).length;
+  $('aTotal').textContent=d.length;$('aToday').textContent=todayN;$('aElig').textContent=elig;
+  const cnt=b=>d.filter(x=>x.bg===b).length,max=Math.max(1,...BG.map(cnt));
+  $('bars').innerHTML=BG.map(b=>`<div class="bar"><b>${b}</b><div class="track"><i style="width:${cnt(b)/max*100}%"></i></div><span>${cnt(b)}</span></div>`).join('');
+  const q=$('q').value.trim().toLowerCase(),fb=$('fbg').value;
+  const rows=d.filter(x=>(!fb||x.bg===fb)&&(!q||[x.name,x.phone,x.nic,x.addr].join(' ').toLowerCase().includes(q)));
+  $('count').textContent=rows.length+' / '+d.length;
+  $('tbody').innerHTML=rows.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.age)}</td><td>${esc(x.phone)}</td><td><span class="tag">${esc(x.bg)||'—'}</span></td><td>${esc(x.addr)}</td><td>${x.last||'—'}</td><td><div class="act"><button class="btn sm" data-today="${x.id}" ${x.last===t?'disabled':''}>${T('btn_today')}</button><button class="btn sm line" data-del="${x.id}">${T('btn_del')}</button></div></td></tr>`).join('')
+    ||`<tr><td colspan="7" style="color:var(--mut)">${T('no_data')}</td></tr>`;
+}
+$('q').addEventListener('input',()=>authed&&renderAll());
+$('fbg').addEventListener('change',()=>authed&&renderAll());
+$('tbody').onclick=e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.today){const x=db.d.find(z=>z.id===b.dataset.today);if(x){x.last=today();save();renderAll();applySettings()}}
+  else if(b.dataset.del&&confirm(T('confirm_del'))){db.d=db.d.filter(z=>z.id!==b.dataset.del);save();renderAll();applySettings()}
+};
+
+$('exportBtn').onclick=async()=>{
+  const head=['Name','Age','Phone','NIC','Blood group','Address','Last donation','Registered'];
+  const cell=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+  const text='\uFEFF'+[head,...db.d.map(x=>[x.name,x.age,x.phone,x.nic,x.bg,x.addr,x.last,x.reg])].map(r=>r.map(cell).join(',')).join('\r\n');
+  const name='donors_'+today()+'.csv';
+  let cap=null;try{cap=window.claude?await window.claude.use('downloads'):null}catch(e){}
+  if(cap){try{await cap.save({filename:name,data:text})}catch(e){toast(T('save_fail'),'bad')}}
+  else{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));a.download=name;document.body.appendChild(a);a.click();a.remove()}
+};
+$('printBtn').onclick=()=>{try{window.print()}catch(e){}};
+
+$('setForm').onsubmit=e=>{
+  e.preventDefault();const s=db.s;
+  s.org=$('sOrg').value.trim()||DEF.org;s.orgEn=$('sOrgEn').value.trim()||DEF.orgEn;
+  s.title=$('sTitle').value.trim()||DEF.title;s.titleEn=$('sTitleEn').value.trim()||DEF.titleEn;
+  s.desc=$('sDesc').value.trim();s.descEn=$('sDescEn').value.trim();
+  s.date=$('sDate').value.trim();s.phone=$('sPhone').value.trim();
+  if($('sPass').value.length>=4){s.pass=$('sPass').value;$('sPass').value=''}
+  save();applySettings();toast(T('saved'),'good');
+};
+function readImg(f,max,key){
+  if(!f)return;
+  if(f.size>max)return toast(T('too_big'),'bad');
+  const r=new FileReader();
+  r.onload=()=>{db.s[key]=r.result;save();applySettings();toast(T('saved'),'good')};
+  r.readAsDataURL(f);
+}
+$('sHero').onchange=e=>readImg(e.target.files[0],1.2e6,'hero');
+$('sLogo').onchange=e=>readImg(e.target.files[0],3e5,'logo');
+$('clearHero').onclick=()=>{db.s.hero='';save();applySettings()};
+
+fillSettings();
+applyLang();
+route();
+</script>
+</body>
+</html>
